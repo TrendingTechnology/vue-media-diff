@@ -1,60 +1,75 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <h1>{{ msg }}</h1>
-    <h2>Essential Links</h2>
-    <ul>
-      <li><a href="https://vuejs.org" target="_blank">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank">Forum</a></li>
-      <li><a href="https://chat.vuejs.org" target="_blank">Community Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank">Twitter</a></li>
-    </ul>
-    <h2>Ecosystem</h2>
-    <ul>
-      <li><a href="http://router.vuejs.org/" target="_blank">vue-router</a></li>
-      <li><a href="http://vuex.vuejs.org/" target="_blank">vuex</a></li>
-      <li><a href="http://vue-loader.vuejs.org/" target="_blank">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank">awesome-vue</a></li>
-    </ul>
+    <div class="intro">
+      A useful component to diff media (image, video) by import <a href="https://github.com/MKFMIKU/vue-media-diff">vue-media-diff</a>
+      <br>
+      <br>
+      <img src="http://forthebadge.com/images/badges/built-with-love.svg" alt="">
+      <img src="http://forthebadge.com/images/badges/uses-js.svg" alt="">
+    </div>
+
+    <div class="demo">
+      <section>
+        <span>simple diff with image</span>
+        <br>
+        <br>
+        <MediaDiff :origin="origin"
+                   :diff="diff"
+                    style="width: 540px; height: 400px">
+        </MediaDiff>
+      </section>
+    </div>
   </div>
 </template>
 
 <script>
-export default {
-  name: 'app',
-  data () {
-    return {
-      msg: 'Welcome to Your Vue.js App'
-    }
+
+  import MediaDiff from './Component.vue';
+
+  export default {
+    name: 'app',
+    data() {
+      return {
+        origin: "src/assets/origin.jpg",
+        diff: "src/assets/diff.jpg"
+      }
+    },
+    components: {
+      MediaDiff
+    },
   }
-}
 </script>
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style lang="scss">
+  *{
+    margin: 0;
+    padding: 0;
+  }
+  #app{
+    width: 100%;
+    background-color: #fff;
+    font-family: Tahoma, Helvetica, Arial, "Microsoft Yahei","微软雅黑", STXihei, "华文细黑", sans-serif;
+    a{
+      color: #42b883;
+    }
+  }
 
-h1, h2 {
-  font-weight: normal;
-}
+  .intro{
+    width: 100%;
+    text-align: center;
+    margin-top: 80px;
+  }
 
-ul {
-  list-style-type: none;
-  padding: 0;
-}
+  .demo{
+    width: 100%;
+    padding: 20px;
+    margin: 20px auto;
+    background-color: #f9f9f9;
+    text-align: center;
 
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-
-a {
-  color: #42b983;
-}
+    section{
+      width: 100%;
+      text-align: center;
+    }
+  }
 </style>

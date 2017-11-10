@@ -12,6 +12,33 @@
 npm install vue-media-diff -s
 ```
 
+## Usage
+```js
+import MediaDiff from './Component.vue';
+
+  export default {
+    name: 'app',
+    data() {
+      return {
+        origin: "src/assets/origin.jpg",
+        diff: "src/assets/diff.jpg"
+      }
+    },
+    components: {
+      MediaDiff
+    },
+  }
+```
+
+```html
+<MediaDiff :origin="origin"
+           :diff="diff"
+           style="width: 540px; height: 400px">
+</MediaDiff>
+```
+![](https://ooo.0o0.ooo/2017/11/10/5a0565569b03f.png)
+
+
 ## Build Setup
 
 ``` bash
