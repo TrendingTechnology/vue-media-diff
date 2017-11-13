@@ -7,13 +7,17 @@
 
     <div class="origin-wrapper" :style="{ width: posX + 'px' }" @mousedown.prevent="onMouseDown">
       <img :src="origin" v-if="dtype==1" :style="{ width: width + 'px' }"/>
-      <video :src="origin" v-if="dtype==-1"></video>
+      <video :src="origin" v-if="dtype==-1" :style="{ width: width + 'px' }" autoplay loop="loop"></video>
     </div>
 
     <img :src="diff" v-if="dtype==1"/>
-    <video :src="diff" v-if="dtype==-1"></video>
+    <video :src="diff" v-if="dtype==-1" autoplay loop="loop"></video>
 
     <div class="handle" @mousedown.prevent="onMouseDown" :style="{ left: posX + 'px' }">
+      <div class="cursor" v-if="cursor">
+        <div class="circle">
+        </div>
+      </div>
     </div>
 
   </figure>
@@ -23,7 +27,8 @@
   export default {
     props: {
       origin: String,
-      diff: String
+      diff: String,
+      cursor: String,
     },
     data() {
       return {
@@ -127,13 +132,26 @@
     position: absolute;
     top: 0;
     bottom: 0;
-    color: #fff;
-    background-color: currentColor;
+    color: rgba(255, 255, 255, 0.80);
+    background-color: rgba(255, 255, 255, 0.80);;
     width: 2px;
     cursor: ew-resize;
     transform: translateX(-50%) translateZ(0);
     z-index: 2;
     will-change: left;
     left: 200px;
+  }
+
+  .cursor{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateZ(0);
+    .circle {
+      background-color: rgba(255, 255, 255, 0.80);
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+    }
   }
 </style>

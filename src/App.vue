@@ -15,9 +15,43 @@
         <br>
         <MediaDiff :origin="origin"
                    :diff="diff"
-                    style="width: 540px; height: 400px">
+                   style="width: 540px; height: 400px">
         </MediaDiff>
       </section>
+
+      <section>
+        <span>diff image with a cursor</span>
+        <br>
+        <br>
+        <MediaDiff :origin="origin"
+                   :diff="diff"
+                   cursor="circle"
+                   style="width: 540px; height: 400px">
+        </MediaDiff>
+      </section>
+
+      <section>
+        <span>diff video with a cursor</span>
+        <br>
+        <br>
+        <MediaDiff :origin="origin_video"
+                   :diff="diff_video"
+                   cursor="circle"
+                   style="width: 480px; height: 360px">
+        </MediaDiff>
+      </section>
+
+      <section>
+        <span>auto diff video</span>
+        <br>
+        <br>
+        <MediaDiff :origin="origin_video"
+                   :diff="diff_video"
+                   cursor="circle"
+                   style="width: 480px; height: 360px">
+        </MediaDiff>
+      </section>
+
     </div>
   </div>
 </template>
@@ -31,7 +65,9 @@
     data() {
       return {
         origin: "src/assets/origin.jpg",
-        diff: "src/assets/diff.jpg"
+        diff: "src/assets/diff.jpg",
+        origin_video: "src/assets/diff.mp4",
+        diff_video: "src/assets/origin.mp4",
       }
     },
     components: {
@@ -70,6 +106,12 @@
     section{
       width: 100%;
       text-align: center;
+      padding: 36px;
+      box-sizing: border-box;
+      span{
+        font-size: 18px;
+        color: #42b883;
+      }
     }
   }
 </style>
